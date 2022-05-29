@@ -257,8 +257,13 @@ next_char:
 # return value: none
 
 shuffle_image:
-	addi 	sp, sp, 4
-	sw 	ra, (sp)
+	addi 	sp, sp, -24
+	sw 	ra, 20(sp)
+	sw	s0, 16(sp)
+	sw	s1, 12(sp)
+	sw	s2, 8(sp)
+	sw	s3, 4(sp)
+	sw	s4, (sp)
 
 	mv	s0, a0
 	mv	s1, a2
@@ -294,6 +299,11 @@ choose_random_rect_pair:  # Fisher–Yates algorithm
 	bgtz 	s4, choose_random_rect_pair	
 	
 shuffle_image_fin:	
-	lw 	ra, (sp)
-	addi	sp, sp, 4
+	lw	s4, (sp)
+	lw	s3, 4(sp)
+	lw	s2, 8(sp)
+	lw	s1, 12(sp)
+	lw	s0, 16(sp)
+	lw 	ra, 20(sp)
+	addi	sp, sp, 24
 	ret
