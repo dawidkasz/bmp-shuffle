@@ -72,7 +72,7 @@ fin_a:
 
 
 ;===============================================================
-;shuffleImage: Swap two rectangles in place
+;swapRectangles: Swap two rectangles in place
 ;Arguments:
 ;   [ebp+8] - x1
 ;   [ebp+12] - y1
